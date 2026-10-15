@@ -68,7 +68,24 @@ foreach ( externado_get_effort_levels() as $externado_effort_id => $externado_ef
 
 <!-- wp:paragraph {"className":"externado-hero__lead"} -->
 <p class="externado-hero__lead"><?php echo esc_html( sprintf( /* translators: %d: number of features. */ __( '%d funcionalidades nuevas del editor, contadas como si abriéramos juntos las inscripciones 2027. Vote las que le sirven: al final, sus votos se convierten en la hoja de ruta del sitio.', 'externado' ), count( $externado_features ) ) ); ?></p>
+<!-- /wp:paragraph -->
+<?php
+// "Practice without risk": opens a disposable copy in WordPress Playground. Hidden when already inside Playground.
+$externado_in_playground = false !== strpos( (string) wp_parse_url( home_url(), PHP_URL_HOST ), 'playground.wordpress.net' );
+if ( ! $externado_in_playground ) :
+	?>
+<!-- wp:group {"className":"externado-hero__practice","layout":{"type":"default"}} -->
+<div class="wp-block-group externado-hero__practice"><!-- wp:buttons -->
+<div class="wp-block-buttons"><!-- wp:button {"className":"externado-hero__playground"} -->
+<div class="wp-block-button externado-hero__playground"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url( EXTERNADO_PLAYGROUND_URL ); ?>" target="_blank" rel="noreferrer noopener"><?php esc_html_e( 'Practique sin riesgo', 'externado' ); ?><span class="screen-reader-text"> <?php esc_html_e( '(se abre en una pestaña nueva)', 'externado' ); ?></span></a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons -->
+
+<!-- wp:paragraph {"className":"externado-hero__practice-note"} -->
+<p class="externado-hero__practice-note"><?php esc_html_e( 'Abre una copia de este sitio en WordPress Playground: puede editar y probar todo sin afectar nada. Se borra al cerrar la pestaña.', 'externado' ); ?></p>
 <!-- /wp:paragraph --></div>
+<!-- /wp:group -->
+<?php endif; ?></div>
 <!-- /wp:column -->
 
 <!-- wp:column {"width":"42%","className":"externado-hero__howto"} -->

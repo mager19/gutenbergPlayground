@@ -9,6 +9,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// Public Playground link: a disposable copy of this demo built from playground/blueprint.json on GitHub.
+const EXTERNADO_PLAYGROUND_URL = 'https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/mager19/gutenbergPlayground/main/playground/blueprint.json';
+
 require_once get_theme_file_path( 'inc/features.php' );
 require_once get_theme_file_path( 'inc/markup.php' );
 require_once get_theme_file_path( 'inc/votes.php' );

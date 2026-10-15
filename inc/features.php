@@ -68,8 +68,8 @@ function externado_get_chapters() {
 		),
 		'orientar'  => array(
 			'number' => 6,
-			'title'  => __( 'Orientar al aspirante con IA', 'externado' ),
-			'intro'  => __( 'El aspirante describe con sus palabras qué quiere estudiar y el sitio le sugiere programas reales del catálogo.', 'externado' ),
+			'title'  => __( 'Inteligencia artificial y práctica', 'externado' ),
+			'intro'  => __( 'El equipo redacta noticias desde Claude y las encuentra como borrador en WordPress; cualquiera practica en una copia desechable.', 'externado' ),
 		),
 		'redactar'  => array(
 			'number' => 7,
@@ -327,23 +327,45 @@ function externado_get_features() {
 				__( 'Seleccione audios de la biblioteca de medios.', 'externado' ),
 			),
 		),
-		'ai-finder'         => array(
-			'title'   => __( 'Buscador de programas con IA', 'externado' ),
+		'mcp-claude'        => array(
+			'title'      => __( 'Redactar con Claude (MCP)', 'externado' ),
+			'chapter'    => 'orientar',
+			'effort'     => 'C',
+			'what'       => __( 'El sitio declara «habilidades» con la Abilities API de WordPress y el plugin oficial MCP Adapter las expone a asistentes como Claude Desktop. Aquí, la principal: redactar una noticia y dejarla como borrador en WordPress.', 'externado' ),
+			'value'      => __( 'Comunicaciones le pide a Claude la noticia de la convocatoria de Derecho y recibe un borrador con título, resumen y párrafos, ya en su categoría. El equipo solo revisa y ajusta: Claude nunca publica y respeta los permisos del usuario.', 'externado' ),
+			'demo'       => 'editor',
+			'demo_label' => __( 'Así se ve en Claude Desktop (ilustración)', 'externado' ),
+			/* translators: %d: number of steps. */
+			'steps_label' => __( 'Cómo conectarlo (%d pasos)', 'externado' ),
+			'try'        => array(
+				'type' => 'admin',
+				'path' => 'edit.php?post_status=draft&post_type=post',
+			),
+			'steps'      => array(
+				__( 'Instale el plugin MCP Adapter (oficial de WordPress.org) y registre las habilidades del sitio en el tema o en un plugin.', 'externado' ),
+				__( 'En Claude Desktop, agregue el conector del sitio en la configuración y reinicie la aplicación.', 'externado' ),
+				__( 'Pídale la noticia con el contexto que tenga, por ejemplo: «Redacta una noticia sobre la apertura de inscripciones 2027 en Derecho y déjala como borrador».', 'externado' ),
+				__( 'Revise el borrador en Entradas → Borradores: la publicación siempre la decide una persona.', 'externado' ),
+			),
+		),
+		'playground'        => array(
+			'title'   => __( 'WordPress Playground: práctica sin riesgo', 'externado' ),
 			'chapter' => 'orientar',
-			'effort'  => 'C',
-			'what'    => __( 'Buscador en lenguaje natural que usa el cliente de IA incluido en WordPress 7: el modelo elige entre los programas publicados, clasificados por nivel, modalidad, jornada y facultad. Sin IA configurada, responde una búsqueda por palabras con sinónimos.', 'externado' ),
-			'value'   => __( 'El aspirante escribe «algo de finanzas que pueda estudiar de noche» y encuentra programas reales, sin conocer los nombres oficiales ni recorrer filtros.', 'externado' ),
+			'effort'  => 'B',
+			'what'    => __( 'WordPress completo que corre en el navegador, sin servidor. Un enlace instala este tema y el contenido de demostración, y abre la presentación con sesión iniciada.', 'externado' ),
+			'value'   => __( 'Capacitar al equipo editorial y mostrar propuestas al cliente: cada persona tiene su propia copia para probar y equivocarse, que se borra al cerrar la pestaña.', 'externado' ),
 			'demo'    => 'front',
+			'demo_label' => __( 'Qué incluye el enlace', 'externado' ),
+			/* translators: %d: number of steps. */
+			'steps_label' => __( 'Cómo usarlo (%d pasos)', 'externado' ),
 			'try'     => array(
-				'type'      => 'view',
-				'post_type' => 'page',
-				'slug'      => 'buscador-de-programas',
+				'type' => 'url',
+				'url'  => EXTERNADO_PLAYGROUND_URL,
 			),
 			'steps'   => array(
-				__( 'Escriba en el buscador lo que le gustaría estudiar, con sus palabras, o pulse uno de los ejemplos.', 'externado' ),
-				__( 'Mire la etiqueta sobre los resultados: «Respuesta con IA» o «Búsqueda por palabras». Sin IA configurada se usa la búsqueda por palabras.', 'externado' ),
-				__( 'Para activar la IA: instale el plugin del proveedor (Anthropic, OpenAI o Google), vaya a Ajustes → Conectores y pegue la clave de API.', 'externado' ),
-				__( 'La IA solo elige entre los programas publicados y sus categorías: no inventa programas. Lo que escribe el aspirante no se guarda.', 'externado' ),
+				__( 'Abra el enlace: la primera carga tarda entre 30 y 60 segundos mientras instala WordPress, el tema y el contenido.', 'externado' ),
+				__( 'Pruebe cualquier novedad de esta página: edite, borre o rompa lo que quiera; nada afecta al sitio real.', 'externado' ),
+				__( 'Para actualizar la copia, se publica el tema en GitHub: el próximo Playground que se abra ya trae los cambios.', 'externado' ),
 			),
 		),
 		'interactivity'     => array(
@@ -486,6 +508,11 @@ function externado_get_feature_try_url( $id ) {
 		return current_user_can( 'edit_theme_options' ) ? admin_url( $target['path'] ) : '';
 	}
 
+	// External link open to everyone (e.g. the public Playground copy).
+	if ( 'url' === $target['type'] ) {
+		return (string) $target['url'];
+	}
+
 	$post_id = externado_get_post_id_by_slug( $target['slug'], $target['post_type'] );
 
 	// Front-end features (e.g. breadcrumbs) are best tried on the published page itself.
@@ -559,6 +586,10 @@ function externado_feature_unit_markup( $id, $demo = '' ) {
 		$stage_class = $is_front ? 'externado-feature__demo' : 'externado-feature__demo externado-feature__demo--mock';
 		$label_class = $is_front ? 'externado-feature__label' : 'externado-feature__label is-mock';
 		$label       = $is_front ? __( 'En vivo', 'externado' ) : __( 'Así se ve en el editor (ilustración)', 'externado' );
+		// Illustrations of tools outside the editor (e.g. Claude Desktop) name their own surface.
+		if ( ! empty( $feature['demo_label'] ) ) {
+			$label = $feature['demo_label'];
+		}
 
 		$out .= '<!-- wp:group {"className":"' . $stage_class . '","layout":{"type":"default"}} -->' . "\n";
 		$out .= '<div class="wp-block-group ' . $stage_class . '">';
@@ -571,7 +602,9 @@ function externado_feature_unit_markup( $id, $demo = '' ) {
 
 	// "Pruébalo tú" always sits at the end of the steps it belongs to, so its destination is explained.
 	if ( ! empty( $feature['steps'] ) ) {
-		$summary = $is_front
+		$summary = ! empty( $feature['steps_label'] )
+			? sprintf( $feature['steps_label'], count( $feature['steps'] ) )
+			: ( $is_front
 			? sprintf(
 				/* translators: %d: number of steps. */
 				_n( 'Cómo probarla en el editor (%d paso)', 'Cómo probarla en el editor (%d pasos)', count( $feature['steps'] ), 'externado' ),
@@ -581,7 +614,7 @@ function externado_feature_unit_markup( $id, $demo = '' ) {
 				/* translators: %d: number of steps. */
 				_n( 'Se ve en el editor · cómo probarla (%d paso)', 'Se ve en el editor · cómo probarla (%d pasos)', count( $feature['steps'] ), 'externado' ),
 				count( $feature['steps'] )
-			);
+			) );
 		$out .= '<!-- wp:details {"summary":"' . esc_attr( $summary ) . '","className":"externado-feature__howto"} -->' . "\n";
 		$out .= '<details class="wp-block-details externado-feature__howto"><summary>' . esc_html( $summary ) . '</summary>';
 		$out .= '<!-- wp:list {"ordered":true} -->' . "\n" . '<ol class="wp-block-list">';

@@ -154,6 +154,37 @@ body {
 	text-wrap: pretty;
 }
 
+/* "Practique sin riesgo": the one call to action of the hero, with a short explanation. */
+.externado-hero__practice {
+	margin-block-start: var(--wp--preset--spacing--40) !important;
+	max-width: 34rem;
+}
+
+.externado-hero__playground .wp-block-button__link {
+	min-height: 44px;
+	padding: 0.7em 1.4em;
+	font-weight: 700;
+	color: var(--wp--preset--color--contrast);
+	background: var(--wp--preset--color--accent);
+	border-radius: 2px;
+}
+
+.externado-hero__playground .wp-block-button__link:hover {
+	color: var(--wp--preset--color--slate);
+	background: var(--wp--preset--color--base);
+}
+
+.externado-hero__playground .wp-block-button__link:focus-visible {
+	outline: 2px solid var(--wp--preset--color--base);
+	outline-offset: 3px;
+}
+
+.externado-hero__practice-note {
+	margin-block-start: var(--wp--preset--spacing--20) !important;
+	font-size: var(--wp--preset--font-size--small);
+	color: var(--externado-hero-muted);
+}
+
 .externado-hero__subtitle {
 	margin-block: 0 var(--wp--preset--spacing--30);
 	font-size: var(--wp--preset--font-size--medium) !important;
@@ -698,6 +729,83 @@ body {
 	color: var(--wp--preset--color--base);
 	background: var(--externado-wp-blue);
 	border-radius: 2px;
+}
+
+/* Claude Desktop illustration: user prompts on the right, Claude's answers on the left, tool use in between. */
+.externado-mock--chat {
+	gap: var(--wp--preset--spacing--10);
+}
+
+.externado-chat__user {
+	justify-self: end;
+	max-width: 85%;
+	padding: var(--wp--preset--spacing--20) var(--wp--preset--spacing--30);
+	background: #f0eee6;
+	border-radius: 12px 12px 2px 12px;
+}
+
+.externado-chat__claude {
+	max-width: 92%;
+	padding-block-end: var(--wp--preset--spacing--20);
+}
+
+.externado-chat__meta {
+	margin-block-start: var(--wp--preset--spacing--10) !important;
+}
+
+.externado-chat__tool {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4em;
+	padding: 0.15em 0.6em;
+	font-size: var(--wp--preset--font-size--x-small);
+	font-weight: 700;
+	color: #4f5f65;
+	border: 1px solid var(--wp--preset--color--border);
+	border-radius: 999px;
+}
+
+/* The draft Claude left in WordPress, shown as a compact preview inside the conversation. */
+.externado-chat__draft {
+	max-width: 92%;
+	padding: var(--wp--preset--spacing--20) var(--wp--preset--spacing--30);
+	background: var(--wp--preset--color--base);
+	border: 1px solid var(--wp--preset--color--border);
+	border-inline-start: 3px solid var(--wp--preset--color--primary);
+	border-radius: 4px;
+}
+
+.externado-chat__draft-label {
+	display: block;
+	font-size: var(--wp--preset--font-size--x-small);
+	font-weight: 700;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	color: #4f5f65;
+}
+
+.externado-chat__draft-title {
+	display: block;
+	margin-block: 0.25em;
+	font-weight: 700;
+}
+
+.externado-chat__tool::before {
+	content: "";
+	width: 0.5em;
+	height: 0.5em;
+	border-radius: 50%;
+	background: #d97757; /* Claude accent */
+}
+
+.externado-pg-list {
+	margin: 0;
+	padding-inline-start: 1.25em;
+	font-size: var(--wp--preset--font-size--small);
+}
+
+.externado-pg-list li + li {
+	margin-block-start: var(--wp--preset--spacing--10);
 }
 
 /* Editor-only features: steps tucked into a native Details block. */
