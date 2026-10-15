@@ -1,0 +1,126 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"settings": {
+		"appearanceTools": true,
+		"useRootPaddingAwareAlignments": true,
+		"layout": {
+			"contentSize": "760px",
+			"wideSize": "1200px"
+		},
+		"color": {
+			"defaultPalette": false,
+			"defaultGradients": false,
+			"palette": [
+				{ "slug": "primary", "color": "#00522C", "name": "Verde Externado" },
+				{ "slug": "primary-dark", "color": "#002E19", "name": "Verde oscuro" },
+				{ "slug": "secondary", "color": "#4D7B19", "name": "Verde hoja" },
+				{ "slug": "accent", "color": "#F29251", "name": "Naranja" },
+				{ "slug": "accent-dark", "color": "#EC7E41", "name": "Naranja oscuro" },
+				{ "slug": "danger", "color": "#B43133", "name": "Rojo" },
+				{ "slug": "slate", "color": "#32464D", "name": "Pizarra" },
+				{ "slug": "surface", "color": "#F2F2F2", "name": "Gris claro" },
+				{ "slug": "border", "color": "#CCCCCC", "name": "Borde" },
+				{ "slug": "base", "color": "#FFFFFF", "name": "Blanco" },
+				{ "slug": "contrast", "color": "#222222", "name": "Texto" }
+			]
+		},
+		"spacing": {
+			"units": [ "px", "rem", "%", "vw" ],
+			"spacingSizes": [
+				{ "slug": "10", "size": "0.25rem", "name": "1" },
+				{ "slug": "20", "size": "0.5rem", "name": "2" },
+				{ "slug": "30", "size": "1rem", "name": "3" },
+				{ "slug": "40", "size": "1.5rem", "name": "4" },
+				{ "slug": "50", "size": "2.5rem", "name": "5" },
+				{ "slug": "60", "size": "4rem", "name": "6" }
+			]
+		},
+		"typography": {
+			"defaultFontSizes": false,
+			"fluid": true,
+			"fontFamilies": [
+				{
+					"slug": "lato",
+					"name": "Lato",
+					"fontFamily": "Lato, sans-serif",
+					"fontFace": [
+						{ "fontFamily": "Lato", "fontWeight": "300", "fontStyle": "normal", "fontDisplay": "swap", "src": [ "file:./assets/fonts/lato-300.woff2" ] },
+						{ "fontFamily": "Lato", "fontWeight": "400", "fontStyle": "normal", "fontDisplay": "swap", "src": [ "file:./assets/fonts/lato-400.woff2" ] },
+						{ "fontFamily": "Lato", "fontWeight": "400", "fontStyle": "italic", "fontDisplay": "swap", "src": [ "file:./assets/fonts/lato-400-italic.woff2" ] },
+						{ "fontFamily": "Lato", "fontWeight": "700", "fontStyle": "normal", "fontDisplay": "swap", "src": [ "file:./assets/fonts/lato-700.woff2" ] },
+						{ "fontFamily": "Lato", "fontWeight": "900", "fontStyle": "normal", "fontDisplay": "swap", "src": [ "file:./assets/fonts/lato-900.woff2" ] }
+					]
+				}
+			],
+			"fontSizes": [
+				{ "slug": "x-small", "size": "0.75rem", "name": "XS" },
+				{ "slug": "small", "size": "0.875rem", "name": "S" },
+				{ "slug": "medium", "size": "1rem", "name": "M" },
+				{ "slug": "large", "size": "1.25rem", "name": "L", "fluid": { "min": "1.125rem", "max": "1.25rem" } },
+				{ "slug": "x-large", "size": "1.75rem", "name": "XL", "fluid": { "min": "1.375rem", "max": "1.75rem" } },
+				{ "slug": "xx-large", "size": "3.25rem", "name": "XXL", "fluid": { "min": "2.25rem", "max": "3.25rem" } }
+			]
+		}
+	},
+	"styles": {
+		"color": {
+			"background": "var:preset|color|base",
+			"text": "var:preset|color|contrast"
+		},
+		"typography": {
+			"fontFamily": "var:preset|font-family|lato",
+			"fontSize": "var:preset|font-size|medium",
+			"lineHeight": "1.6"
+		},
+		"spacing": {
+			"blockGap": "var:preset|spacing|30",
+			"padding": {
+				"left": "var:preset|spacing|40",
+				"right": "var:preset|spacing|40"
+			}
+		},
+		"elements": {
+			"link": {
+				"color": { "text": "var:preset|color|primary" },
+				":hover": { "color": { "text": "var:preset|color|secondary" } }
+			},
+			"heading": {
+				"color": { "text": "var:preset|color|slate" },
+				"typography": { "fontWeight": "700", "lineHeight": "1.2" }
+			},
+			"h1": { "typography": { "fontSize": "var:preset|font-size|xx-large", "fontWeight": "300" } },
+			"h2": { "typography": { "fontSize": "var:preset|font-size|xx-large", "fontWeight": "300" } },
+			"h3": { "typography": { "fontSize": "var:preset|font-size|large" } },
+			"h4": { "typography": { "fontSize": "var:preset|font-size|medium" } },
+			"button": {
+				"color": {
+					"background": "var:preset|color|secondary",
+					"text": "var:preset|color|base"
+				},
+				"border": { "radius": "0" },
+				"typography": { "fontWeight": "700", "fontSize": "var:preset|font-size|small" },
+				":hover": { "color": { "background": "var:preset|color|primary" } }
+			}
+		},
+		"blocks": {
+			"core/navigation": {
+				"typography": { "fontSize": "var:preset|font-size|small", "fontWeight": "700" }
+			},
+			"core/post-title": {
+				"typography": { "fontWeight": "700" }
+			},
+			"core/icon": {
+				"color": { "text": "var:preset|color|primary" }
+			}
+		}
+	},
+	"templateParts": [
+		{ "name": "header", "title": "Header", "area": "header" },
+		{ "name": "footer", "title": "Footer", "area": "footer" }
+	],
+	"customTemplates": [
+		{ "name": "page-no-title", "title": "Página sin título", "postTypes": [ "page" ] },
+		{ "name": "page-novedades", "title": "Novedades Gutenberg", "postTypes": [ "page" ] }
+	]
+}

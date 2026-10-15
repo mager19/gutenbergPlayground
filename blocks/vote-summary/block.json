@@ -1,0 +1,20 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "externado/vote-summary",
+	"title": "Resumen de votos",
+	"category": "widgets",
+	"icon": "chart-bar",
+	"description": "Matriz de valor contra esfuerzo y ranking de las funcionalidades votadas.",
+	"keywords": [ "voto", "matriz", "ranking" ],
+	"textdomain": "externado",
+	"attributes": {},
+	"supports": {
+		"html": false,
+		"align": [ "wide" ],
+		"interactivity": true
+	},
+	"editorScript": "externado-blocks-editor",
+	"viewScriptModule": "externado-votes-view",
+	"render": "file:./render.php"
+}

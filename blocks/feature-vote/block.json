@@ -1,0 +1,24 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "externado/feature-vote",
+	"title": "Voto por funcionalidad",
+	"category": "widgets",
+	"icon": "thumbs-up",
+	"description": "Botones «Me interesa» y «No por ahora» para votar una funcionalidad del catálogo.",
+	"keywords": [ "voto", "encuesta", "novedades" ],
+	"textdomain": "externado",
+	"attributes": {
+		"feature": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"supports": {
+		"html": false,
+		"interactivity": true
+	},
+	"editorScript": "externado-blocks-editor",
+	"viewScriptModule": "externado-votes-view",
+	"render": "file:./render.php"
+}

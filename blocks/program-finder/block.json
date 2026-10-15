@@ -1,0 +1,19 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "externado/program-finder",
+	"title": "Buscador de programas",
+	"category": "widgets",
+	"icon": "search",
+	"description": "Buscador de programas en lenguaje natural: usa la IA de WordPress si está configurada y, si no, una búsqueda por palabras.",
+	"keywords": [ "buscador", "programas", "ia", "admisiones" ],
+	"textdomain": "externado",
+	"supports": {
+		"html": false,
+		"align": [ "wide" ],
+		"interactivity": true
+	},
+	"editorScript": "externado-blocks-editor",
+	"viewScriptModule": "externado-finder-view",
+	"render": "file:./render.php"
+}

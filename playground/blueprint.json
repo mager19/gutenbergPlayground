@@ -1,0 +1,45 @@
+{
+	"$schema": "https://playground.wordpress.net/blueprint-schema.json",
+	"meta": {
+		"title": "Universidad Externado: Novedades de Gutenberg",
+		"description": "Demo theme with the Gutenberg features presentation, example programs and news. Each visitor gets a disposable copy to practice with.",
+		"author": "Simian"
+	},
+	"landingPage": "/novedades-gutenberg/",
+	"login": true,
+	"preferredVersions": {
+		"php": "8.3",
+		"wp": "latest"
+	},
+	"features": {
+		"networking": true
+	},
+	"steps": [
+		{
+			"step": "setSiteOptions",
+			"options": {
+				"blogname": "Universidad Externado (demo)",
+				"blogdescription": "Prototipo de rediseño con las novedades de Gutenberg",
+				"permalink_structure": "/%postname%/"
+			}
+		},
+		{
+			"step": "installTheme",
+			"themeData": {
+				"resource": "git:directory",
+				"url": "https://github.com/mager19/gutenbergPlayground",
+				"ref": "main",
+				"refType": "branch",
+				"path": "/"
+			},
+			"options": {
+				"activate": true,
+				"targetFolderName": "externado"
+			}
+		},
+		{
+			"step": "runPHP",
+			"code": "<?php require_once '/wordpress/wp-load.php'; wp_set_current_user( 1 ); require '/wordpress/wp-content/themes/externado/bin/seed.php';"
+		}
+	]
+}

@@ -1,0 +1,40 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"title": "Sección verde",
+	"slug": "section-verde",
+	"blockTypes": [ "core/group", "core/columns" ],
+	"styles": {
+		"color": {
+			"background": "var:preset|color|primary",
+			"text": "var:preset|color|base"
+		},
+		"spacing": {
+			"padding": {
+				"top": "var:preset|spacing|60",
+				"bottom": "var:preset|spacing|60"
+			}
+		},
+		"elements": {
+			"heading": {
+				"color": { "text": "var:preset|color|base" }
+			},
+			"link": {
+				"color": { "text": "var:preset|color|base" },
+				":hover": { "color": { "text": "var:preset|color|accent" } }
+			},
+			"button": {
+				"color": {
+					"background": "var:preset|color|accent",
+					"text": "var:preset|color|primary-dark"
+				},
+				":hover": {
+					"color": {
+						"background": "var:preset|color|base",
+						"text": "var:preset|color|primary"
+					}
+				}
+			}
+		}
+	}
+}

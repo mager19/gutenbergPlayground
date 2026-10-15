@@ -1,0 +1,21 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "externado/try-it",
+	"title": "Pruébalo tú",
+	"category": "widgets",
+	"icon": "edit",
+	"description": "Enlace al editor con el contenido de demostración de una funcionalidad. Solo lo ven quienes pueden editar ese contenido.",
+	"textdomain": "externado",
+	"attributes": {
+		"feature": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"supports": {
+		"html": false
+	},
+	"editorScript": "externado-blocks-editor",
+	"render": "file:./render.php"
+}
